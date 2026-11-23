@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLMVerse — Where Language Meets the Mind of AI</title>
+  <meta name="description" content="LLMVerse is an interactive cosmic AI research laboratory where you explore tokenization, embeddings, 3D semantic space, and the Large Language Model pipeline." />
+
+  <!-- Futuristic Laboratory Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Ambient Cosmic Particle Background Canvas -->
+  <canvas id="cosmic-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Subtle Cosmic Nebula Glow Layers -->
+  <div class="cosmic-nebula nebula-1" aria-hidden="true"></div>
+  <div class="cosmic-nebula nebula-2" aria-hidden="true"></div>
+  <div class="cosmic-nebula nebula-3" aria-hidden="true"></div>
+  <div class="lab-grid-overlay" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       NAVIGATION BAR
+       ========================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <!-- LLMVerse Brand Logo -->
+      <a href="#hero" class="brand-logo" aria-label="LLMVerse Home">
+        <span class="logo-orb" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                <stop offset="0%" stop-color="#c084fc" />
+                <stop offset="50%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#f472b6" />
+              </linearGradient>
+            </defs>
+            <circle cx="20" cy="20" r="17" stroke="url(#logoGrad)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.85" />
+            <ellipse cx="20" cy="20" rx="14" ry="6.5" transform="rotate(-28 20 20)" stroke="url(#logoGrad)" stroke-width="1.4" opacity="0.9" />
+            <ellipse cx="20" cy="20" rx="14" ry="6.5" transform="rotate(28 20 20)" stroke="#38bdf8" stroke-width="1.2" opacity="0.7" />
+            <circle cx="20" cy="20" r="4.5" fill="url(#logoGrad)" />
+            <circle cx="11" cy="14" r="2" fill="#e879f9" />
+            <circle cx="30" cy="25" r="2" fill="#38bdf8" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">LLM<span class="text-gradient">Verse</span></span>
+          <span class="brand-sub">COSMIC AI LAB</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-links" id="nav-links" aria-label="Primary Navigation">
+        <a href="#tokenizer" class="nav-link">Tokenizer</a>
+        <a href="#embeddings" class="nav-link">Embeddings</a>
+        <a href="#visualizer" class="nav-link">3D Universe</a>
+        <a href="#explorer" class="nav-link">Explorer</a>
+        <a href="#pipeline" class="nav-link">Pipeline</a>
+      </nav>
+
+      <!-- Header Right Actions -->
+      <div class="nav-actions">
+        <span class="lab-status-pill" title="Educational Simulation Environment">
+          <span class="status-dot"></span>
+          <span>SIM LAB v2.6</span>
+        </span>
+        <a href="#explorer" class="btn btn-sm btn-glow">Launch Lab</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================
+         SECTION 1: HERO SECTION + 3D AI BRAIN
+         ========================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left Hero Copy -->
+        <div class="hero-content">
+          <div class="eyebrow-badge">
+            <span class="badge-pulse"></span>
+            <span class="mono-label">EXPLORE. DECODE. UNDERSTAND.</span>
+          </div>
+
+          <h1 class="hero-title">
+            Where Language Meets the <span class="text-gradient-hero">Mind of AI.</span>
+          </h1>
+
+          <p class="hero-description">
+            Step inside an interactive cosmic AI research laboratory. Discover how
+            <strong>Large Language Models</strong> break sentences into tokens, map words into
+            high-dimensional mathematical galaxies, and transform raw language into intelligent understanding.
+          </p>
+
+          <!-- Primary Hero Buttons -->
+          <div class="hero-cta-group">
+            <a href="#pipeline" class="btn btn-primary btn-lg" id="hero-explore-btn">
+              <span>Explore Pipeline</span>
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="#tokenizer" class="btn btn-glass btn-lg" id="hero-start-btn">
+              <span>Start Experimenting</span>
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M10 3L12.2 7.8L17 10L12.2 12.2L10 17L7.8 12.2L3 10L7.8 7.8L10 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Laboratory Telemetry Highlights -->
+          <div class="hero-metrics">
+            <div class="metric-chip">
+              <span class="metric-value">06</span>
+              <span class="metric-label">Interactive Labs</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-chip">
+              <span class="metric-value">3D</span>
+              <span class="metric-label">WebGL Neural Space</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-chip">
+              <span class="metric-value">100%</span>
+              <span class="metric-label">Visual &amp; Beginner-Friendly</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero 3D AI Brain Container -->
+        <div class="hero-visual">
+          <div class="brain-stage glass-frame">
+            <!-- Holographic Lab Corner Brackets -->
+            <span class="hud-corner tl"></span>
+            <span class="hud-corner tr"></span>
+            <span class="hud-corner bl"></span>
+            <span class="hud-corner br"></span>
+
+            <!-- Top HUD Telemetry -->
+            <div class="brain-hud-top">
+              <div class="hud-tag">
+                <span class="hud-dot cyan"></span>
+                <span>NEURAL CORTEX // 3D</span>
+              </div>
+              <div class="hud-tag muted">
+                <span id="brain-fps-label">SYNAPSES: ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- Three.js WebGL Mount Point for 3D AI Brain -->
+            <div id="hero-brain-canvas-wrap" class="brain-canvas-wrap" aria-label="Interactive 3D glowing AI brain visualization">
+              <canvas id="hero-brain-canvas"></canvas>
+            </div>
+
+            <!-- Bottom Interactive Controls for the 3D Brain -->
+            <div class="brain-hud-bottom">
+              <span class="hud-hint">Drag to rotate · Move cursor to steer</span>
+              <button type="button" class="btn-hud" id="trigger-pulse-btn">
+                <span class="pulse-ring-icon"></span>
+                Fire Neural Pulse
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Cue -->
+      <a href="#tokenizer" class="scroll-cue" aria-label="Scroll to Tokenizer Lab">
+        <span class="scroll-line"></span>
+        <span class="mono-label">ENTER LABORATORY</span>
+      </a>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2: TOKENIZER LAB
+         ========================================================= -->
+    <section class="lab-section" id="tokenizer">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lab-code">LAB // 01</span>
+            <span class="section-tag">TEXT SEGMENTATION</span>
+          </div>
+          <h2 class="section-title">Tokenizer <span class="text-gradient">Lab</span></h2>
+          <p class="section-subtitle">
+            Before an AI can read your sentence, it breaks language into smaller pieces called <strong>tokens</strong>
+            and assigns each piece a unique integer ID. Try typing anything below.
+          </p>
+        </div>
+
+        <div class="glass-card lab-panel">
+          <!-- Input Bar + Presets -->
+          <div class="lab-input-block">
+            <label for="tokenizer-input" class="input-label">
+              <span>Enter a sentence to tokenize</span>
+              <span class="demo-pill">Educational BPE-Style Tokenizer</span>
+            </label>
+
+            <div class="input-action-row">
+              <input
+                type="text"
+                id="tokenizer-input"
+                class="cosmic-input"
+                value="Large Language Models decode human meaning into cosmic vectors!"
+                placeholder="Type any sentence, code, or emoji..."
+                autocomplete="off"
+              />
+              <button type="button" class="btn btn-primary" id="tokenize-btn">
+                <span>Tokenize</span>
+                <svg class="btn-icon" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 10H15M10 5V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Quick Example Chips -->
+            <div class="preset-row">
+              <span class="preset-label">Try presets:</span>
+              <button type="button" class="preset-chip" data-tokenizer-preset="Large Language Models decode human meaning into cosmic vectors!">Cosmic AI</button>
+              <button type="button" class="preset-chip" data-tokenizer-preset="Unbelievable neural-networks predict probabilities in 2026.">Subwords &amp; Numbers</button>
+              <button type="button" class="preset-chip" data-tokenizer-preset="Hello LLMVerse! Where language meets intelligence.">Greeting</button>
+              <button type="button" class="preset-chip" data-tokenizer-preset="Transformers use self-attention to connect distant words.">Transformers</button>
+            </div>
+          </div>
+
+          <!-- Tokenization Stats Strip -->
+          <div class="stats-strip" id="tokenizer-stats">
+            <div class="stat-box">
+              <span class="stat-label">Total Tokens</span>
+              <span class="stat-value text-cyan" id="stat-token-count">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Unique Tokens</span>
+              <span class="stat-value text-lavender" id="stat-unique-count">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Characters</span>
+              <span class="stat-value" id="stat-char-count">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Avg Chars / Token</span>
+              <span class="stat-value text-pink" id="stat-ratio">0.0</span>
+            </div>
+          </div>
+
+          <!-- Token Visual Output Area -->
+          <div class="tokenizer-output-grid">
+            <div class="output-panel">
+              <div class="panel-header">
+                <span class="panel-title">Visual Token Stream</span>
+                <span class="panel-hint">Hover or click any token chip to inspect</span>
+              </div>
+              <div class="token-chips-container" id="token-chips-container" aria-live="polite">
+                <!-- Populated dynamically by js/app.js -->
+              </div>
+            </div>
+
+            <div class="output-panel">
+              <div class="panel-header">
+                <span class="panel-title">Encoded Token ID Sequence</span>
+                <button type="button" class="btn-mini" id="copy-token-ids-btn">Copy IDs</button>
+              </div>
+              <div class="code-box mono-code" id="token-ids-array" aria-live="polite">[]</div>
+              <div class="token-inspector" id="token-inspector">
+                <span class="inspector-title">Token Inspector</span>
+                <p class="inspector-body">Click any colorful token chip on the left to inspect its subword structure, type, and deterministic vocabulary ID.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Educational Footnote -->
+          <div class="edu-callout">
+            <span class="edu-icon" aria-hidden="true">✦</span>
+            <p>
+              <strong>How this works:</strong> Real LLMs (like GPT or Gemini) learn a vocabulary of ~50,000–250,000 subword pieces using algorithms like Byte-Pair Encoding (BPE).
+              LLMVerse uses a <strong>consistent educational tokenizer</strong>: common words get clean vocabulary IDs, while longer words split into recognizable prefixes and suffixes (like <code>un</code> + <code>##believ</code> + <code>##able</code>) with deterministic IDs that stay identical everywhere on this site.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3: EMBEDDINGS LAB
+         ========================================================= -->
+    <section class="lab-section" id="embeddings">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lab-code">LAB // 02</span>
+            <span class="section-tag">NUMERICAL MEANING</span>
+          </div>
+          <h2 class="section-title">Embeddings <span class="text-gradient">Lab</span></h2>
+          <p class="section-subtitle">
+            Computers cannot feel what a word means—so AI converts every word into a list of numbers called a
+            <strong>vector embedding</strong>. Words with similar meanings end up with similar coordinates in space.
+          </p>
+        </div>
+
+        <div class="embeddings-layout">
+          <!-- Main Word-to-Vector Converter Card -->
+          <div class="glass-card lab-panel">
+            <div class="sim-banner">
+              <span class="sim-badge">DEMONSTRATION MODE</span>
+              <span>Simulated educational embeddings — deterministic concept vectors designed for learning, not live neural model weights.</span>
+            </div>
+
+            <div class="lab-input-block">
+              <label for="embedding-word-input" class="input-label">
+                <span>Convert a word or concept into a numerical vector</span>
+                <span class="mono-label text-cyan" id="embedding-dim-badge">16 DIMENSIONS</span>
+              </label>
+
+              <div class="input-action-row">
+                <input
+                  type="text"
+                  id="embedding-word-input"
+                  class="cosmic-input"
+                  value="galaxy"
+                  placeholder="Enter a word (e.g., galaxy, neural, queen, ocean)..."
+                  autocomplete="off"
+                />
+                <select id="embedding-dim-select" class="cosmic-select" aria-label="Vector dimensions">
+                  <option value="8">8D Vector</option>
+                  <option value="16" selected>16D Vector</option>
+                  <option value="24">24D Vector</option>
+                </select>
+                <button type="button" class="btn btn-primary" id="generate-embedding-btn">Encode Vector</button>
+              </div>
+
+              <div class="preset-row">
+                <span class="preset-label">Explore concepts:</span>
+                <button type="button" class="preset-chip" data-embed-word="galaxy">galaxy</button>
+                <button type="button" class="preset-chip" data-embed-word="nebula">nebula</button>
+                <button type="button" class="preset-chip" data-embed-word="neural">neural</button>
+                <button type="button" class="preset-chip" data-embed-word="transformer">transformer</button>
+                <button type="button" class="preset-chip" data-embed-word="king">king</button>
+                <button type="button" class="preset-chip" data-embed-word="queen">queen</button>
+                <button type="button" class="preset-chip" data-embed-word="forest">forest</button>
+              </div>
+            </div>
+
+            <!-- Vector Metadata Row -->
+            <div class="vector-meta-grid">
+              <div class="meta-tile">
+                <span class="meta-k">Input Term</span>
+                <span class="meta-v text-lavender" id="embed-term-display">"galaxy"</span>
+              </div>
+              <div class="meta-tile">
+                <span class="meta-k">Dimensions (d)</span>
+                <span class="meta-v text-cyan" id="embed-dims-display">16</span>
+              </div>
+              <div class="meta-tile">
+                <span class="meta-k">Vector Norm ‖v‖</span>
+                <span class="meta-v" id="embed-norm-display">1.000</span>
+              </div>
+              <div class="meta-tile">
+                <span class="meta-k">Simulated Cluster</span>
+                <span class="meta-v text-pink" id="embed-cluster-display">Cosmos &amp; Space</span>
+              </div>
+            </div>
+
+            <!-- Visual Signal Bar Chart of Dimensions -->
+            <div class="vector-visual-box">
+              <div class="panel-header">
+                <span class="panel-title">Simulated Embedding Fingerprint (Hover each dimension)</span>
+                <span class="legend-inline">
+                  <span class="leg-dot pos"></span> Positive
+                  <span class="leg-dot neg"></span> Negative
+                </span>
+              </div>
+              <div class="vector-bars" id="embedding-bars" aria-label="Visual bar representation of vector dimensions">
+                <!-- Dynamic bars -->
+              </div>
+              <div class="dim-tooltip" id="embedding-dim-tooltip">
+                Hover over any dimension bar above to see its educational feature axis and exact numerical value.
+              </div>
+            </div>
+
+            <!-- Raw Numerical Array -->
+            <div class="vector-raw-box">
+              <div class="panel-header">
+                <span class="panel-title">Numerical Vector Array (Simulated)</span>
+                <button type="button" class="btn-mini" id="copy-vector-btn">Copy Vector</button>
+              </div>
+              <div class="code-box mono-code vector-code" id="embedding-raw-array">[]</div>
+            </div>
+          </div>
+
+          <!-- Right Sidebar: Similarity Comparator + Beginner Explanation -->
+          <div class="embeddings-side-col">
+            <!-- Cosine Similarity Mini-Lab -->
+            <div class="glass-card side-panel">
+              <div class="panel-header">
+                <span class="panel-title">Cosine Similarity Meter</span>
+                <span class="demo-pill">Simulated Demo</span>
+              </div>
+              <p class="side-desc">
+                Compare two words to measure how close their simulated embedding vectors point in mathematical space.
+              </p>
+
+              <div class="compare-inputs">
+                <input type="text" id="compare-word-a" class="cosmic-input sm" value="galaxy" placeholder="Word A" />
+                <span class="compare-vs">vs</span>
+                <input type="text" id="compare-word-b" class="cosmic-input sm" value="cosmos" placeholder="Word B" />
+              </div>
+
+              <button type="button" class="btn btn-glass btn-full" id="compare-words-btn">Compare Meaning Vectors</button>
+
+              <div class="similarity-result">
+                <div class="sim-score-row">
+                  <span class="sim-label">Cosine Similarity</span>
+                  <span class="sim-value text-cyan" id="similarity-score">0.89</span>
+                </div>
+                <div class="sim-bar-track">
+                  <div class="sim-bar-fill" id="similarity-bar-fill" style="width: 89%"></div>
+                </div>
+                <p class="sim-verdict" id="similarity-verdict">Strong semantic alignment in the simulated embedding space.</p>
+              </div>
+
+              <div class="preset-row compact">
+                <button type="button" class="preset-chip" data-pair="galaxy|cosmos">galaxy vs cosmos</button>
+                <button type="button" class="preset-chip" data-pair="king|queen">king vs queen</button>
+                <button type="button" class="preset-chip" data-pair="neural|ocean">neural vs ocean</button>
+              </div>
+            </div>
+
+            <!-- Plain English Explanation Card -->
+            <div class="glass-card side-panel explainer-card">
+              <h3 class="explainer-title">Embeddings in Simple Words</h3>
+              <p>
+                Imagine placing every word in the dictionary on a giant 3D map—except instead of just
+                <em>North, East, and Up</em>, real AI models use <strong>thousands of invisible directions</strong>
+                (like 768 to 12,288 dimensions).
+              </p>
+              <ul class="explainer-list">
+                <li><strong>Similar ideas live nearby:</strong> <em>star</em>, <em>galaxy</em>, and <em>nebula</em> cluster in the same cosmic neighborhood.</li>
+                <li><strong>Math becomes meaning:</strong> AI measures angles between vectors to understand context, synonyms, and analogies.</li>
+                <li><strong>Transparent simulation:</strong> The numbers shown here are deterministic educational vectors—not live outputs from a trained neural network.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4: INTERACTIVE 3D EMBEDDING UNIVERSE VISUALIZER
+         ========================================================= -->
+    <section class="lab-section" id="visualizer">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lab-code">LAB // 03</span>
+            <span class="section-tag">3D SEMANTIC GALAXY</span>
+          </div>
+          <h2 class="section-title">Interactive <span class="text-gradient">3D Universe</span></h2>
+          <p class="section-subtitle">
+            Explore a glowing 3D universe of sentence embeddings. Drag to orbit, scroll to zoom, click any star to inspect its vector,
+            or launch your own sentence into semantic space.
+          </p>
+        </div>
+
+        <div class="universe-shell glass-frame">
+          <span class="hud-corner tl"></span>
+          <span class="hud-corner tr"></span>
+          <span class="hud-corner bl"></span>
+          <span class="hud-corner br"></span>
+
+          <!-- Top Control Bar -->
+          <div class="universe-toolbar">
+            <div class="universe-add-form">
+              <input
+                type="text"
+                id="universe-sentence-input"
+                class="cosmic-input"
+                placeholder="Add your own sentence to the 3D universe (e.g., 'Quantum starlight powers neural minds')..."
+                autocomplete="off"
+              />
+              <button type="button" class="btn btn-primary" id="universe-add-btn">
+                <span>Plot in 3D</span>
+              </button>
+            </div>
+
+            <div class="universe-tool-buttons">
+              <button type="button" class="btn-hud active" id="toggle-orbit-btn" title="Toggle Auto-Orbit">Auto-Orbit</button>
+              <button type="button" class="btn-hud active" id="toggle-labels-btn" title="Toggle Floating Labels">Labels</button>
+              <button type="button" class="btn-hud active" id="toggle-links-btn" title="Toggle Semantic Neighbor Links">Links</button>
+              <button type="button" class="btn-hud" id="universe-zoom-in" title="Zoom In">+</button>
+              <button type="button" class="btn-hud" id="universe-zoom-out" title="Zoom Out">−</button>
+              <button type="button" class="btn-hud" id="universe-reset-btn" title="Reset Camera">Reset</button>
+            </div>
+          </div>
+
+          <!-- 3D Viewport + Side Inspector -->
+          <div class="universe-stage-grid">
+            <!-- Three.js Interactive 3D Canvas -->
+            <div class="universe-canvas-wrap" id="universe-canvas-wrap">
+              <canvas id="universe-canvas" aria-label="Interactive 3D semantic embedding space"></canvas>
+              <!-- Projected 2D Labels Overlay -->
+              <div class="universe-labels-layer" id="universe-labels-layer" aria-hidden="true"></div>
+
+              <!-- Cluster Legend Overlay -->
+              <div class="universe-legend">
+                <span class="legend-item"><i class="dot dot-blue"></i> AI &amp; Computing</span>
+                <span class="legend-item"><i class="dot dot-purple"></i> Space &amp; Cosmos</span>
+                <span class="legend-item"><i class="dot dot-pink"></i> Language &amp; Creativity</span>
+                <span class="legend-item"><i class="dot dot-cyan"></i> Nature &amp; Science</span>
+                <span class="legend-item"><i class="dot dot-gold"></i> Your Custom Points</span>
+              </div>
+
+              <!-- Simulation Disclaimer Badge -->
+              <div class="universe-sim-tag">
+                SIMULATED 3D PROJECTION · DRAG TO ROTATE · SCROLL TO ZOOM · CLICK STARS
+              </div>
+            </div>
+
+            <!-- Point Details Inspector Panel -->
+            <aside class="universe-inspector" id="universe-inspector">
+              <div class="inspector-head">
+                <span class="mono-label text-cyan">POINT TELEMETRY</span>
+                <span class="cluster-badge" id="u-point-cluster">AI &amp; Computing</span>
+              </div>
+
+              <h3 class="u-point-sentence" id="u-point-sentence">Select a glowing point in the 3D universe</h3>
+
+              <div class="u-coords-grid">
+                <div class="coord-box">
+                  <span class="coord-axis">X</span>
+                  <span class="coord-val" id="u-coord-x">0.00</span>
+                </div>
+                <div class="coord-box">
+                  <span class="coord-axis">Y</span>
+                  <span class="coord-val" id="u-coord-y">0.00</span>
+                </div>
+                <div class="coord-box">
+                  <span class="coord-axis">Z</span>
+                  <span class="coord-val" id="u-coord-z">0.00</span>
+                </div>
+              </div>
+
+              <div class="u-section">
+                <span class="u-label">Simulated 8D Vector Preview</span>
+                <div class="code-box mono-code compact-code" id="u-point-vector">[]</div>
+              </div>
+
+              <div class="u-section">
+                <span class="u-label">Closest Semantic Neighbors</span>
+                <ul class="neighbor-list" id="u-neighbor-list">
+                  <!-- Dynamic neighbors -->
+                </ul>
+              </div>
+
+              <div class="u-footer-stats">
+                <span id="u-total-points">16 sentences plotted</span>
+                <button type="button" class="btn-mini" id="u-clear-custom-btn">Clear Custom</button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5: CUSTOM EXPLORER
+         ========================================================= -->
+    <section class="lab-section" id="explorer">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lab-code">LAB // 04</span>
+            <span class="section-tag">END-TO-END SANDBOX</span>
+          </div>
+          <h2 class="section-title">Custom <span class="text-gradient">Explorer</span></h2>
+          <p class="section-subtitle">
+            Enter your own text to run the full educational encoding workbench: split into tokens, inspect unique IDs,
+            generate demonstration token &amp; sentence embeddings, and send your sentence straight to the 3D Universe.
+          </p>
+        </div>
+
+        <div class="glass-card lab-panel">
+          <div class="sim-banner">
+            <span class="sim-badge">EDUCATIONAL SIMULATION</span>
+            <span>All token IDs and numerical vectors below are deterministic demonstration outputs—not live LLM inference.</span>
+          </div>
+
+          <div class="lab-input-block">
+            <label for="explorer-textarea" class="input-label">
+              <span>Your Custom Text</span>
+              <span class="mono-label" id="explorer-live-counter">0 chars</span>
+            </label>
+            <textarea
+              id="explorer-textarea"
+              class="cosmic-textarea"
+              rows="3"
+              placeholder="Write a sentence or short paragraph to decode into tokens, IDs, and numerical vectors..."
+            >Neural transformers weave human language into glowing constellations of meaning.</textarea>
+
+            <div class="explorer-actions">
+              <div class="preset-row no-margin">
+                <button type="button" class="preset-chip" data-explorer-preset="Neural transformers weave human language into glowing constellations of meaning.">Neural Constellations</button>
+                <button type="button" class="preset-chip" data-explorer-preset="Deep space telescopes observe distant galaxies born billions of years ago.">Deep Space</button>
+                <button type="button" class="preset-chip" data-explorer-preset="Creative poetry turns simple words into unforgettable human emotions.">Creative Poetry</button>
+              </div>
+              <div class="explorer-btn-group">
+                <button type="button" class="btn btn-primary" id="explorer-analyze-btn">Analyze &amp; Encode</button>
+                <button type="button" class="btn btn-glass" id="explorer-send-3d-btn">Plot in 3D Universe →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explorer Results Grid -->
+          <div class="explorer-results-grid">
+            <!-- Left: Tokens & Sentence Vector -->
+            <div class="output-panel">
+              <div class="panel-header">
+                <span class="panel-title">1. Tokens &amp; Unique IDs</span>
+                <span class="mono-label text-cyan" id="explorer-token-total">0 tokens</span>
+              </div>
+              <div class="token-chips-container compact" id="explorer-tokens-box"></div>
+
+              <div class="panel-header spaced-top">
+                <span class="panel-title">2. Pooled Sentence Embedding (Simulated 12D)</span>
+                <span class="demo-pill">Demo Vector</span>
+              </div>
+              <div class="vector-bars compact-bars" id="explorer-sentence-bars"></div>
+              <div class="code-box mono-code compact-code" id="explorer-sentence-vector">[]</div>
+            </div>
+
+            <!-- Right: Per-Token Embedding Table -->
+            <div class="output-panel">
+              <div class="panel-header">
+                <span class="panel-title">3. Token-by-Token Vector Matrix (Simulated)</span>
+                <span class="panel-hint">First 6 dimensions per token</span>
+              </div>
+              <div class="matrix-scroll">
+                <table class="vector-table" id="explorer-matrix-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Token</th>
+                      <th>ID</th>
+                      <th>Simulated Vector (d₁…d₆)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="explorer-matrix-body">
+                    <!-- Dynamic rows -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6: UNDERSTANDING THE LLM PIPELINE
+         ========================================================= -->
+    <section class="lab-section" id="pipeline">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span class="lab-code">LAB // 05</span>
+            <span class="section-tag">ARCHITECTURE WALKTHROUGH</span>
+          </div>
+          <h2 class="section-title">Understanding the <span class="text-gradient">LLM Pipeline</span></h2>
+          <p class="section-subtitle">
+            Trace how a prompt travels through a Large Language Model—from raw characters to predicted output text.
+            Click any glowing stage below or press Auto-Play for a guided tour.
+          </p>
+        </div>
+
+        <div class="glass-card lab-panel pipeline-panel">
+          <!-- Pipeline Playback Controls -->
+          <div class="pipeline-controls">
+            <div class="pipeline-sample-pill">
+              <span class="mono-label text-cyan">TRACE SAMPLE:</span>
+              <span id="pipeline-active-sample">"AI explores cosmic language"</span>
+            </div>
+            <div class="pipeline-nav-btns">
+              <button type="button" class="btn-hud" id="pipeline-prev-btn">← Prev</button>
+              <button type="button" class="btn-hud active-toggle" id="pipeline-autoplay-btn">▶ Auto-Play</button>
+              <button type="button" class="btn-hud" id="pipeline-next-btn">Next →</button>
+            </div>
+          </div>
+
+          <!-- Interactive 7-Stage Animated Pipeline Flow -->
+          <div class="pipeline-track" role="tablist" aria-label="LLM Pipeline Stages">
+            <button type="button" class="pipe-node active" data-stage="0" role="tab" aria-selected="true">
+              <span class="pipe-index">01</span>
+              <span class="pipe-name">Input Text</span>
+              <span class="pipe-mini">Raw Prompt</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="1" role="tab" aria-selected="false">
+              <span class="pipe-index">02</span>
+              <span class="pipe-name">Tokenization</span>
+              <span class="pipe-mini">Subwords</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="2" role="tab" aria-selected="false">
+              <span class="pipe-index">03</span>
+              <span class="pipe-name">Token IDs</span>
+              <span class="pipe-mini">Integers</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="3" role="tab" aria-selected="false">
+              <span class="pipe-index">04</span>
+              <span class="pipe-name">Embeddings</span>
+              <span class="pipe-mini">Vectors</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="4" role="tab" aria-selected="false">
+              <span class="pipe-index">05</span>
+              <span class="pipe-name">Positional Encoding</span>
+              <span class="pipe-mini">Word Order</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="5" role="tab" aria-selected="false">
+              <span class="pipe-index">06</span>
+              <span class="pipe-name">Transformer</span>
+              <span class="pipe-mini">Self-Attention</span>
+            </button>
+            <div class="pipe-connector" aria-hidden="true"><span class="energy-pulse"></span></div>
+
+            <button type="button" class="pipe-node" data-stage="6" role="tab" aria-selected="false">
+              <span class="pipe-index">07</span>
+              <span class="pipe-name">Output Text</span>
+              <span class="pipe-mini">Next Token</span>
+            </button>
+          </div>
+
+          <!-- Stage Explanation & Interactive Visual Preview -->
+          <div class="pipeline-detail-grid" id="pipeline-detail-panel">
+            <div class="pipeline-explanation">
+              <div class="stage-header-row">
+                <span class="stage-step-badge" id="pipe-detail-step">STAGE 01 / 07</span>
+                <span class="demo-pill" id="pipe-detail-tag">RAW LANGUAGE</span>
+              </div>
+              <h3 class="stage-title" id="pipe-detail-title">Input Text</h3>
+              <p class="stage-summary" id="pipe-detail-summary"></p>
+
+              <div class="stage-insight-grid">
+                <div class="insight-box">
+                  <span class="insight-label">Why It Matters</span>
+                  <p id="pipe-detail-why"></p>
+                </div>
+                <div class="insight-box">
+                  <span class="insight-label">In Real LLMs</span>
+                  <p id="pipe-detail-real"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pipeline-preview-card">
+              <div class="panel-header">
+                <span class="panel-title" id="pipe-preview-heading">Stage Visualization</span>
+                <span class="mono-label text-pink">EDUCATIONAL DEMO</span>
+              </div>
+              <div class="pipe-preview-body" id="pipe-preview-body">
+                <!-- Dynamically rendered per stage -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <span class="brand-name">LLM<span class="text-gradient">Verse</span></span>
+          <span class="footer-divider">·</span>
+          <span class="footer-tagline">Where Language Meets the Mind of AI.</span>
+        </div>
+        <p class="footer-sub">Explore. Decode. Understand.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Hero</a>
+        <a href="#tokenizer">Tokenizer</a>
+        <a href="#embeddings">Embeddings</a>
+        <a href="#visualizer">3D Universe</a>
+        <a href="#explorer">Explorer</a>
+        <a href="#pipeline">Pipeline</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="disclaimer-text">
+        Educational Simulation Notice: LLMVerse uses deterministic educational tokenizers, simulated embedding vectors, and illustrative attention/probability demos to teach LLM concepts visually. It does not run live neural model inference.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="cosmic-toast" id="cosmic-toast" role="status" aria-live="polite"></div>
+
+  <!-- Three.js Library (UMD build for instant compatibility over HTTP and local files) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+
+  <!-- LLMVerse Modular Scripts -->
+  <script src="js/nlp-engine.js"></script>
+  <script src="js/hero-brain.js"></script>
+  <script src="js/universe-3d.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
